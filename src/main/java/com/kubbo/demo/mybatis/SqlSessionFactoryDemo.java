@@ -76,4 +76,17 @@ public class SqlSessionFactoryDemo extends TestCase {
 
         }
     }
+
+
+    /**
+     * mapUnderscoreToCamelCase 是否开启自动驼峰命令规则的映射,默认false
+     * 如数据库:create_time
+     * Model:createTime
+     */
+    public void testMapUnderscoreToCamelCase() {
+        SqlSession session = sqlSessionFactory.openSession();
+        BlogMapper mapper = session.getMapper(BlogMapper.class);
+        Blog blog = mapper.selectBlog(1);
+        System.out.println(blog.getCreateTime());
+    }
 }

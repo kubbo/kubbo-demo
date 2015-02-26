@@ -7,7 +7,10 @@
 
     <!--配置文件-->
     <properties resource="mybatis/jdbc.properties" />
-    
+
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
 
     <environments default="development">
         <environment id="development">
