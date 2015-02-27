@@ -16,7 +16,7 @@
         DELETE FROM BLOG WHERE id = #{id}
     </delete>
 
-    <insert id="insertBlog" parameterType="com.kubbo.demo.mybatis.Blog" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insertBlog" parameterType="blog" keyProperty="id" useGeneratedKeys="true">
         INSERT  INTO  blog (title,content,create_time) VALUES (#{title},#{content},#{createTime})
     </insert>
 

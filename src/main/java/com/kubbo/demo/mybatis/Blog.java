@@ -1,11 +1,14 @@
 package com.kubbo.demo.mybatis;
 
+import org.apache.ibatis.type.Alias;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by zhuwei on 2015/2/26.
  */
+@Alias("blog")
 public class Blog implements Serializable {
 
     private int id;

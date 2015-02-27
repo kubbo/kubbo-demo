@@ -15,6 +15,13 @@
         <setting name="cacheEnabled" value="true" />
     </settings>
 
+
+    <!--利用注解进行alias 命名-->
+    <typeAliases>
+        <package name="com.kubbo.demo.mybatis" />
+    </typeAliases>
+
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
