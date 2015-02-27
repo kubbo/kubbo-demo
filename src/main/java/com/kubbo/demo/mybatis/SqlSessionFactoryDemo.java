@@ -89,4 +89,22 @@ public class SqlSessionFactoryDemo extends TestCase {
         Blog blog = mapper.selectBlog(1);
         System.out.println(blog.getCreateTime());
     }
+
+
+    public void testSelectRecentBlog() {
+        BlogMapper mapper = sqlSessionFactory.openSession().getMapper(BlogMapper.class);
+        Blog blog = mapper.selectRecentBlog();
+        System.out.println(blog);
+    }
+
+
+    public void testDelete() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+
+        Blog blog = mapper.selectRecentBlog();
+        int i = mapper.deleteBlog(blog.getId());
+        sqlSession.commit();
+        System.out.println(i);
+    }
 }

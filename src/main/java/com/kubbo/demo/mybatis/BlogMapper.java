@@ -7,4 +7,8 @@ public interface BlogMapper {
 
 
     Blog selectBlog(int id);
+
+    Blog selectRecentBlog();
+
+    int deleteBlog(int id);
 }

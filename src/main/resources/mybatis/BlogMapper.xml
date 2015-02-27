@@ -6,4 +6,14 @@
     <select id="selectBlog" resultType="com.kubbo.demo.mybatis.Blog">
         select * from BLOG where id = #{id}
     </select>
+
+    <select id="selectRecentBlog" resultType="com.kubbo.demo.mybatis.Blog" >
+        SELECT * FROM BLOG ORDER  BY id desc LIMIT 1
+    </select>
+
+    <delete id="deleteBlog">
+        DELETE FROM BLOG WHERE id = #{id}
+    </delete>
+
+
 </mapper>
