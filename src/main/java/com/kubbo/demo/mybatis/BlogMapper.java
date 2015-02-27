@@ -11,4 +11,6 @@ public interface BlogMapper {
     Blog selectRecentBlog();
 
     int deleteBlog(int id);
+
+    int insertBlog(Blog blog);
 }

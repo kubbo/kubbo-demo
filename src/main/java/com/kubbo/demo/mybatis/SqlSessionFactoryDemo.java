@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
 /**
  * Created by zhuwei on 2015/2/25.
@@ -125,5 +126,17 @@ public class SqlSessionFactoryDemo extends TestCase {
         System.out.println(mapper.selectBlog(3));
 
 
+    }
+
+    public void testInsertBlog() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        Blog blog = new Blog();
+        blog.setTitle("hello");
+        blog.setContent("world");
+        blog.setCreateTime(new Date());
+        int i = mapper.insertBlog(blog);
+        System.out.println(blog.getId());
+        System.out.println(i);
     }
 }
