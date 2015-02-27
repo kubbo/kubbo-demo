@@ -3,11 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kubbo.demo.mybatis.BlogMapper">
+    <!--定义独立的cache,要求 model 可以序列化,并且显示调用commit时才会将数据提交到cache中-->
+    <!--<cache flushInterval="1000000"/>-->
     <select id="selectBlog" resultType="com.kubbo.demo.mybatis.Blog">
         select * from BLOG where id = #{id}
     </select>
-
-    <select id="selectRecentBlog" resultType="com.kubbo.demo.mybatis.Blog" >
+    <select id="selectRecentBlog" resultType="com.kubbo.demo.mybatis.Blog" useCache="true" >
         SELECT * FROM BLOG ORDER  BY id desc LIMIT 1
     </select>
 

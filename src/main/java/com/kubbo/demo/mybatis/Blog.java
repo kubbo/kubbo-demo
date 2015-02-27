@@ -1,11 +1,12 @@
 package com.kubbo.demo.mybatis;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by zhuwei on 2015/2/26.
  */
-public class Blog {
+public class Blog implements Serializable {
 
     private int id;
     private String title;

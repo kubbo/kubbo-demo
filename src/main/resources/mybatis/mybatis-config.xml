@@ -9,7 +9,10 @@
     <properties resource="mybatis/jdbc.properties" />
 
     <settings>
+        <!--将数据库中的a_b 字段自动转成aB 这种驼峰的命名规则-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--是否开启缓存-->
+        <setting name="cacheEnabled" value="true" />
     </settings>
 
     <environments default="development">

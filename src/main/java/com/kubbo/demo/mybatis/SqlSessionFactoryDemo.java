@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -106,5 +107,23 @@ public class SqlSessionFactoryDemo extends TestCase {
         int i = mapper.deleteBlog(blog.getId());
         sqlSession.commit();
         System.out.println(i);
+    }
+
+
+
+    public void testCacheEnabled() throws IOException, InterruptedException {
+        SqlSession session = sqlSessionFactory.openSession();
+        int id = 1;
+        BlogMapper mapper = session.getMapper(BlogMapper.class);
+        //只会进行一次数据库的查询，第二次直接取缓存
+        System.out.println(mapper.selectRecentBlog());
+        session.commit();
+        //如果执行commit,一级缓存也会失效,此时会再次执行向数据库中取数据
+        System.out.println(mapper.selectRecentBlog());
+
+        //由于缓存中没有此查询，所以还会去数据中进行查询的
+        System.out.println(mapper.selectBlog(3));
+
+
     }
 }
