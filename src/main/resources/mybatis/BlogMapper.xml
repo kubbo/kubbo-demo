@@ -29,6 +29,18 @@
             </if>
         </where>
     </select>
+    <select id="selectBlogIn"  resultType="com.kubbo.demo.mybatis.Blog">
+        SELECT * FROM blog
+        <where>
+            <if test="array!=null">
+                id IN
+                collection表示参数类型,array 或 list,item 表示每个元素
+                <foreach collection="array" item="ids" open="(" separator="," close=")">
+                    #{ids}
+                </foreach>
+            </if>
+        </where>
+    </select>
 
     <delete id="deleteBlog">
         DELETE FROM BLOG WHERE id = #{id}

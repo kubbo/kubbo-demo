@@ -1,5 +1,7 @@
 package com.kubbo.demo.mybatis;
 
+import java.util.List;
+
 /**
  * Created by zhuwei on 2015/2/26.
  */
@@ -19,4 +21,6 @@ public interface BlogMapper {
     Blog selectByCondition(Blog blog);
 
     int updateField(Blog blog);
+
+    List<Blog> selectBlogIn(int[] ids);
 }
