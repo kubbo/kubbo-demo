@@ -8,13 +8,13 @@
     <select id="selectBlog" resultType="com.kubbo.demo.mybatis.Blog">
         select * from BLOG where id = #{id}
     </select>
-    <select id="selectRecentBlog" resultType="com.kubbo.demo.mybatis.Blog" useCache="true" >
+    <select id="selectRecentBlog" resultType="com.kubbo.demo.mybatis.Blog" useCache="true">
         SELECT * FROM BLOG ORDER  BY id desc LIMIT 1
     </select>
     <select id="selectByCondition" resultType="com.kubbo.demo.mybatis.Blog">
         SELECT * FROM blog
 
---         用where 标签可以避免sql 语句的错误,AND OR 会根据条件自动去掉
+        -- 用where 标签可以避免sql 语句的错误,AND OR 会根据条件自动去掉
         <where>
             <if test="id!=0">
                 id = #{id}
@@ -30,9 +30,6 @@
         </where>
     </select>
 
-
-    
-
     <delete id="deleteBlog">
         DELETE FROM BLOG WHERE id = #{id}
     </delete>
@@ -47,6 +44,19 @@
         blog_type=#{blogType},
         create_time= #{createTime}
         WHERE  id = #{id}
+    </update>
+
+
+    <!--用update 标签可以避免SQL错误-->
+    <update id="updateField">
+        UPDATE blog
+        <set>
+            <if test="title!=null">title =#{title},</if>
+            <if test="content!=null">content =#{content},</if>
+            <if test="blogType!=null">blog_type=#{blogType},</if>
+            <if test="createTime!=null">create_time =#{createTime},</if>
+        </set>
+        WHERE id =#{id}
     </update>
 
 

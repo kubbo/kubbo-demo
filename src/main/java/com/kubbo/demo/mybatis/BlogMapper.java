@@ -17,4 +17,6 @@ public interface BlogMapper {
     int updateBlog(Blog blog);
 
     Blog selectByCondition(Blog blog);
+
+    int updateField(Blog blog);
 }

@@ -189,4 +189,16 @@ public class SqlSessionFactoryDemo extends TestCase {
         System.out.println(blog);
 
     }
+
+    public void testUpdateField() {
+        SqlSession session = sqlSessionFactory.openSession();
+        BlogMapper mapper = session.getMapper(BlogMapper.class);
+        Blog blog = new Blog();
+        blog.setId(1);
+        blog.setTitle("update:");
+
+        int i = mapper.updateField(blog);
+        session.commit();
+        System.out.println(i);
+    }
 }
