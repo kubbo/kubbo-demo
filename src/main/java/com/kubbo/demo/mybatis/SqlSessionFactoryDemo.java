@@ -154,4 +154,12 @@ public class SqlSessionFactoryDemo extends TestCase {
         System.out.println(i);
 
     }
+
+
+    public void testPluginHandler() {
+        SqlSession session = sqlSessionFactory.openSession();
+        BlogMapper mapper = session.getMapper(BlogMapper.class);
+        Blog blog = mapper.selectRecentBlog();
+        System.out.println(blog);
+    }
 }
