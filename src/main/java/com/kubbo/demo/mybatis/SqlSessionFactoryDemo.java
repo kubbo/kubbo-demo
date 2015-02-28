@@ -111,7 +111,6 @@ public class SqlSessionFactoryDemo extends TestCase {
     }
 
 
-
     public void testCacheEnabled() throws IOException, InterruptedException {
         SqlSession session = sqlSessionFactory.openSession();
         int id = 1;
@@ -161,5 +160,23 @@ public class SqlSessionFactoryDemo extends TestCase {
         BlogMapper mapper = session.getMapper(BlogMapper.class);
         Blog blog = mapper.selectRecentBlog();
         System.out.println(blog);
+    }
+
+
+    public void testUpdateBlog() {
+        SqlSession session = sqlSessionFactory.openSession();
+        BlogMapper mapper = session.getMapper(BlogMapper.class);
+        Blog blog = mapper.selectRecentBlog();
+        if (blog != null) {
+            blog.setId(12);
+            blog.setTitle("zhu");
+            blog.setContent("wei");
+            blog.setCreateTime(new Date());
+            int i = mapper.updateBlog(blog);
+            session.commit();
+
+            System.out.println(i);
+        }
+
     }
 }

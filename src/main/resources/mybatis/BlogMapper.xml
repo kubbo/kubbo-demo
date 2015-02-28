@@ -20,4 +20,13 @@
         INSERT  INTO  blog (title,content,create_time,blog_type) VALUES (#{title},#{content},#{createTime},#{blogType})
     </insert>
 
+    <update id="updateBlog" parameterType="blog">
+        UPDATE blog SET title = #{title},
+        content=#{content},
+        blog_type=#{blogType},
+        create_time= #{createTime}
+        WHERE  id = #{id}
+    </update>
+
+
 </mapper>
