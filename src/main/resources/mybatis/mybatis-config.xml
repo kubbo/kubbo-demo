@@ -16,12 +16,19 @@
     </settings>
 
 
+
     <!--利用注解进行alias 命名-->
     <typeAliases>
         <package name="com.kubbo.demo.mybatis" />
     </typeAliases>
 
 
+
+    <typeHandlers>
+        <typeHandler handler="com.kubbo.demo.mybatis.StringTypeHandler"/>
+        <!--显示声明此句,对于enum 类型存入的是 数字，否则存入的是字符串-->
+        <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.kubbo.demo.mybatis.BlogType" />
+    </typeHandlers>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>

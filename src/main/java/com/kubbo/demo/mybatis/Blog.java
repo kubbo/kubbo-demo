@@ -14,6 +14,7 @@ public class Blog implements Serializable {
     private int id;
     private String title;
     private String content;
+    private BlogType blogType;
     private Date createTime;
 
 
@@ -47,5 +48,13 @@ public class Blog implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public BlogType getBlogType() {
+        return blogType;
+    }
+
+    public void setBlogType(BlogType blogType) {
+        this.blogType = blogType;
     }
 }

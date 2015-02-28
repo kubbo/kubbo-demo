@@ -17,7 +17,7 @@
     </delete>
 
     <insert id="insertBlog" parameterType="blog" keyProperty="id" useGeneratedKeys="true">
-        INSERT  INTO  blog (title,content,create_time) VALUES (#{title},#{content},#{createTime})
+        INSERT  INTO  blog (title,content,create_time,blog_type) VALUES (#{title},#{content},#{createTime},#{blogType})
     </insert>
 
 </mapper>

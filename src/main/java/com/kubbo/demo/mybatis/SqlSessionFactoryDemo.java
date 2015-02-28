@@ -128,6 +128,7 @@ public class SqlSessionFactoryDemo extends TestCase {
 
     }
 
+
     public void testInsertBlog() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
@@ -138,5 +139,19 @@ public class SqlSessionFactoryDemo extends TestCase {
         int i = mapper.insertBlog(blog);
         System.out.println(blog.getId());
         System.out.println(i);
+    }
+
+    public void testTypeHandler() {
+        SqlSession session = sqlSessionFactory.openSession();
+        BlogMapper mapper = session.getMapper(BlogMapper.class);
+        Blog blog = new Blog();
+        blog.setTitle("test");
+        blog.setContent("test2");
+        blog.setCreateTime(new Date());
+        blog.setBlogType(BlogType.C);
+        int i = mapper.insertBlog(blog);
+        session.commit();
+        System.out.println(i);
+
     }
 }
