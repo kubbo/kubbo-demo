@@ -11,6 +11,27 @@
     <select id="selectRecentBlog" resultType="com.kubbo.demo.mybatis.Blog" useCache="true" >
         SELECT * FROM BLOG ORDER  BY id desc LIMIT 1
     </select>
+    <select id="selectByCondition" resultType="com.kubbo.demo.mybatis.Blog">
+        SELECT * FROM blog
+
+--         用where 标签可以避免sql 语句的错误,AND OR 会根据条件自动去掉
+        <where>
+            <if test="id!=0">
+                id = #{id}
+            </if>
+
+            <if test="title!=null">
+                AND title = #{title}
+            </if>
+
+            <if test="content!=null">
+                AND content = #{content}
+            </if>
+        </where>
+    </select>
+
+
+    
 
     <delete id="deleteBlog">
         DELETE FROM BLOG WHERE id = #{id}

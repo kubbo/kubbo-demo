@@ -179,4 +179,14 @@ public class SqlSessionFactoryDemo extends TestCase {
         }
 
     }
+
+    public void testSelectByCondition() {
+        SqlSession session = sqlSessionFactory.openSession();
+        BlogMapper mapper = session.getMapper(BlogMapper.class);
+        Blog condition = new Blog();
+        condition.setId(1);
+        Blog blog = mapper.selectByCondition(condition);
+        System.out.println(blog);
+
+    }
 }
