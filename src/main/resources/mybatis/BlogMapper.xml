@@ -72,4 +72,38 @@
     </update>
 
 
+    <resultMap id="blogDetail" type="blog">
+        <id column="blog_id" property="id" />
+        <result column="blog_title" property="title"/>
+        <result column="blog_content" property="content"/>
+        <result column="blog_create_time" property="createTime"/>
+        <result column="blog_type" property="blogType"/>
+        <!--相关属性的映射-->
+        <association property="author" javaType="com.kubbo.demo.mybatis.Author">
+            <id column="auth_id" property="id"/>
+            <result column="author_username" property="username"/>
+        </association>
+        <!--相关属性的列表映射-->
+        <collection property="posts" ofType="com.kubbo.demo.mybatis.Post">
+            <id column="post_id" property="id"/>
+            <result column="post_title" property="title"/>
+            <result column="post_content" property="content"/>
+        </collection>
+    </resultMap>
+    <select id="selectBlogDetail"  resultMap="blogDetail">
+        SELECT blog.id AS blog_id,
+        blog.title AS blog_title,
+        blog.content AS blog_content,
+        blog.create_time AS blog_create_time,
+        blog.blog_type AS blog_type,
+        author.id AS author_id,
+        author.username AS author_username,
+        post.id AS post_id,
+        post.title AS post_title,
+        post.content AS post_content
+        FROM blog
+        LEFT OUTER JOIN author ON blog.author_id = author.id
+        LEFT OUTER JOIN post ON blog.id = post.blog_id
+        where blog.id = #{id}
+    </select>
 </mapper>

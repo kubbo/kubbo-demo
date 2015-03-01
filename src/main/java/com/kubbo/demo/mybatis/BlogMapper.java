@@ -23,4 +23,6 @@ public interface BlogMapper {
     int updateField(Blog blog);
 
     List<Blog> selectBlogIn(int[] ids);
+
+    Blog selectBlogDetail(int id);
 }
