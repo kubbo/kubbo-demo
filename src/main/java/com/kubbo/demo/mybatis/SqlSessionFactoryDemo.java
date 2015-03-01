@@ -212,4 +212,11 @@ public class SqlSessionFactoryDemo extends TestCase {
 
     }
 
+    public void testMapper2Select() {
+        SqlSession session = sqlSessionFactory.openSession();
+        Blog2Mapper mapper = session.getMapper(Blog2Mapper.class);
+        Blog blog = mapper.select(1);
+        System.out.println(blog);
+    }
+
 }
